@@ -28,7 +28,7 @@ create table armazem_item(
     material_id int,
     dataEntrada timestamp,
     dataLeilao  timestamp,
-    status      varchar(80), --LEILOADO, DISPONIVEL
+    status      varchar(80), --LEILOADO, OBSOLETO
     PRIMARY KEY(id),
     --Criando os refencias as tabelas
     FOREIGN KEY (material_id) REFERENCES material(id)

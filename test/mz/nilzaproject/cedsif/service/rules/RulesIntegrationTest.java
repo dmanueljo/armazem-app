@@ -6,6 +6,7 @@
 package mz.nilzaproject.cedsif.service.rules;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.List;
 import mz.nilzaproject.cedsif.controller.CustomSpringJUnitTransactionalOperations;
@@ -14,11 +15,13 @@ import mz.nilzaproject.cedsif.dao.ArmazemItemDAOImpl;
 import mz.nilzaproject.cedsif.dao.MaterialDAO;
 import mz.nilzaproject.cedsif.dao.MaterialDAOImpl;
 import mz.nilzaproject.cedsif.model.db.ArmazemItem;
+import mz.nilzaproject.cedsif.model.db.Material;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.hamcrest.CoreMatchers;
 import org.hamcrest.Matcher;
 import org.hamcrest.MatcherAssert;
+import org.junit.Assert;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.Mockito;
@@ -53,12 +56,26 @@ public class RulesIntegrationTest extends CustomSpringJUnitTransactionalOperatio
     @Override
     public void testRegra3DefineQuantidadeMaterialObsoletoArmazenadoOuLeiloado() {
         
-        ArmazemItem a = Mockito.mock(ArmazemItem.class);
-        //veryfy
+        /*
+        ArmazemItem item1 = Mockito.mock(ArmazemItem.class);
+        ArmazemItem item2 = Mockito.mock(ArmazemItem.class);
+        */
         
+        List<ArmazemItem> item = this.loadFakeData();
+        
+        //save it to testdb
+        itemDAO.createOrUpdate(item.get(0));
+        //itemDAO.createOrUpdate(item2);
+        
+        //test equals
+        Assert.assertEquals(item,item.get(0));
+        
+        //assertThat(item1, CoreMatchers.equalTo(itens.get(0)));
+        /**
+         * 
         Mockito.when(a.getStatus()).thenReturn("LEILOADO");
         Mockito.verify(a).setStatus("obsoleto");
-        
+         */
         
        /**
          * 
@@ -68,20 +85,22 @@ public class RulesIntegrationTest extends CustomSpringJUnitTransactionalOperatio
          */
         //Mockito.when(items).thenReturn(itemDAO.list()); 
         //MatcherAssert.assertThat(items, CoreMatchers.is(CoreMatchers.equalTo(Collections.EMPTY_LIST)));
-        //check assertation
-       // assertThat(itens, is(rule));
         
-        
+            //check assertation
+         
     }
+    
+    
+    
     
     @Override
     public void testRegra1DeterminaIdadeDeUmEquipamentoOuMaterial() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
 
     @Override
     public void testRegra2DefineQuandoUmDeterminiadoEquipamentoPodeSerLeiloado() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       
     }
 
     @Override

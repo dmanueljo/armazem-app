@@ -13,12 +13,6 @@
     <bean id="propertyConfigurer"
           class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
           p:location="classpath:datasource-test-integration.properties" />
-
-    <!--
-    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-        <constructor-arg index="0" name="url"      value="${spring.datasource.url}"/>
-        <constructor-arg index="1" name="conProps" ref="propertyConfigurer"/>
-    </bean> -->
     
     <bean id="dataSource"
           class="com.mchange.v2.c3p0.ComboPooledDataSource" 
