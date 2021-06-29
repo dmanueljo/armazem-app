@@ -22,14 +22,9 @@ import org.junit.BeforeClass;
  */
 public class RulesTest implements RuleTest {
    
-    private static Rule rule;
+    private Rule rule;
     
-    @BeforeClass
-    public static void setUpClass(){
-    
-        rule = new Rules();
-    }
-        
+  
     @Test
     @Override
     public void testRegra3DefineQuantidadeMaterialObsoletoArmazenadoOuLeiloado() {
@@ -49,7 +44,7 @@ public class RulesTest implements RuleTest {
         //tipo
         m1.setTipo("DESKTOP");
         //
-        item1.setMaterialId(m1);
+        item1.setMaterial(m1);
         //dataEntrada
         item1.setDataEntrada(Calendar.getInstance().getTime());
         
@@ -64,7 +59,7 @@ public class RulesTest implements RuleTest {
         //tipo
         m1.setTipo("IMPRESSORA");
         //
-        item2.setMaterialId(m2);
+        item2.setMaterial(m2);
         //dataEntrada
         item2.setDataEntrada(Calendar.getInstance().getTime());
         
@@ -115,7 +110,7 @@ public class RulesTest implements RuleTest {
         //tipo
         m1.setTipo("DESKTOP");
         //matrial
-        item1.setMaterialId(m1);
+        item1.setMaterial(m1);
         
         //dataEntrada
         //item1.setDataEntrada(Calendar.getInstance().getTime());
@@ -131,7 +126,7 @@ public class RulesTest implements RuleTest {
         
         for(ArmazemItem eachitem : itens){
 
-                if(eachitem.getMaterialId().getId().equals(m1.getId())){
+                if(eachitem.getMaterial().getId().equals(m1.getId())){
                     //pega o item
                     itemConsultado = eachitem;
                     //quebra o ciclo
@@ -145,13 +140,13 @@ public class RulesTest implements RuleTest {
 
             //4nd. retorna a diferenca das datas e valida se é > 2
             //2021-2000=10 e 2021-2020=1
-            int idadeMaterial = rule.executarRegra01(itemConsultado.getMaterialId());
+            int idadeMaterial = rule.executarRegra01(itemConsultado.getMaterial());
             assertEquals(1,idadeMaterial);
             
             int idadeItemNoArmazem = anoActual - anoEntradaArmazem;
             assertEquals(9, idadeItemNoArmazem);
             
-           boolean podeLeiloar = rule.executarRegra01(itemConsultado.getMaterialId()) > 9 && (anoActual - anoEntradaArmazem) > 1; 
+           boolean podeLeiloar = rule.executarRegra01(itemConsultado.getMaterial()) > 9 && (anoActual - anoEntradaArmazem) > 1; 
            //assertTrue("Este Material Nao pode ser leiloado, ainda no Activo segundo o Art.XX de 20XX", podeLeiloar);
            assertFalse(podeLeiloar); 
     }
@@ -193,7 +188,7 @@ public class RulesTest implements RuleTest {
         //tipo
         m1.setTipo("DESKTOP");
         //matrial
-        item1.setMaterialId(m1);
+        item1.setMaterial(m1);
         
         //dataEntrada
         //item1.setDataEntrada(Calendar.getInstance().getTime());
@@ -209,7 +204,7 @@ public class RulesTest implements RuleTest {
         
         for(ArmazemItem eachitem : itens){
 
-                if(eachitem.getMaterialId().getId().equals(m1.getId())){
+                if(eachitem.getMaterial().getId().equals(m1.getId())){
                     //pega o item
                     itemConsultado = eachitem;
                     //quebra o ciclo
@@ -223,7 +218,7 @@ public class RulesTest implements RuleTest {
 
             //4nd. retorna a diferenca das datas e valida se é > 2
             //2021-2000=10 e 2021-2020=1
-            int idadeMaterial = rule.executarRegra01(itemConsultado.getMaterialId());
+            int idadeMaterial = rule.executarRegra01(itemConsultado.getMaterial());
             assertTrue(idadeMaterial >9);
             
             int idadeItemNoArmazem = anoActual - anoEntradaArmazem;

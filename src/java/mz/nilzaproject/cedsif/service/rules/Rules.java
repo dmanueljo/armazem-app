@@ -69,7 +69,7 @@ public class Rules implements Rule{
             
             for(ArmazemItem eachitem : items){
 
-                if(eachitem.getMaterialId().getId().equals(m.getId())){
+                if(eachitem.getMaterial().getId().equals(m.getId())){
                     //pega o item
                     item1 = eachitem;
                     //quebra o ciclo
@@ -82,7 +82,7 @@ public class Rules implements Rule{
             int anoEntradaArmazem = cal.get(Calendar.YEAR);
 
             //4nd. retorna a diferenca das datas e valida se é > 2
-            podeLeiloar = (this.executarRegra01(item1.getMaterialId()) >9 && (anoActual - anoEntradaArmazem) > 1);
+            podeLeiloar = (this.executarRegra01(item1.getMaterial()) >9 && (anoActual - anoEntradaArmazem) > 1);
             
             //altera o estado do matarial no item
             if(podeLeiloar){
@@ -111,17 +111,17 @@ public class Rules implements Rule{
        
             for(ArmazemItem eachItem : this.itemDAO.list()){
 
-                if(eachItem.getMaterialId().getTipo().equals("IMPRESSORA")){
+                if(eachItem.getMaterial().getTipo().equals("IMPRESSORA")){
 
                     //impressoras
                     items.add(eachItem);
 
-                }else if(eachItem.getMaterialId().getTipo().equals("DESKTOP")){
+                }else if(eachItem.getMaterial().getTipo().equals("DESKTOP")){
 
                     //desktops
                     items.add(eachItem);
 
-                }else if(eachItem.getMaterialId().getTipo().equals("LAPTOP")){
+                }else if(eachItem.getMaterial().getTipo().equals("LAPTOP")){
 
                     //laptops
                     items.add(eachItem);
@@ -133,7 +133,7 @@ public class Rules implements Rule{
                 //rule03    
                 for(ArmazemItem eachItem : this.itemDAO.list()){
 
-                    if(eachItem.getMaterialId().getTipo().equals(material.getTipo())){
+                    if(eachItem.getMaterial().getTipo().equals(material.getTipo())){
 
                             //add items
                             items.add(eachItem);

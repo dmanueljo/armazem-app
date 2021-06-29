@@ -34,7 +34,7 @@ public abstract class ArmazemDSImpl<T extends Object,ID extends Serializable> im
         this.clazz = (Class<T>) ((ParameterizedType) getClass()
                 .getGenericSuperclass()).getActualTypeArguments()[0];
         
-        this.session = htemplate.getSessionFactory().openSession();
+        this.session = htemplate.getSessionFactory().getCurrentSession();
         
         LOG.warn("Loading class[" + this.clazz.getName()+"]");  
 

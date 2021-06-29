@@ -18,12 +18,5 @@ import org.springframework.dao.DataAccessException;
 public class MaterialDAOIntegrationTest extends CustomSpringJUnitTransactionalOperations{
     
     private static Log LOG = LogFactory.getLog(MaterialDAOIntegrationTest.class);
-
-    private MaterialDAO materialDAO;
-    
-    @Test
-    public void setUp(){
-        materialDAO = new MaterialDAOImpl(hiberTemplate);
-    }
     
 }

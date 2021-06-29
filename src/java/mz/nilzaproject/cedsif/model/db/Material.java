@@ -39,7 +39,7 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Material.findByIdade", query = "SELECT m FROM Material m WHERE m.idade = :idade")})
 public class Material implements Serializable {
 
-    @ManyToMany(mappedBy = "materialList")
+    @ManyToMany(mappedBy = "materialList",targetEntity = Usuario.class)
     private List<Usuario> usuarioList;
 
     private static final long serialVersionUID = 1L;
@@ -61,9 +61,13 @@ public class Material implements Serializable {
     private Integer anoFabrico;
     @Column(name = "idade")
     private Integer idade;
+    
+    /*
     @OneToMany(mappedBy = "materialId")
     private List<ArmazemItem> armazemItemList = new ArrayList<>();
-
+    */
+   
+    
     public Material() {
     }
 
@@ -135,6 +139,7 @@ public class Material implements Serializable {
         this.idade = idade;
     }
 
+    /*
     @XmlTransient
     public List<ArmazemItem> getArmazemItemList() {
         return armazemItemList;
@@ -143,7 +148,8 @@ public class Material implements Serializable {
     public void setArmazemItemList(List<ArmazemItem> armazemItemList) {
         this.armazemItemList = armazemItemList;
     }
-
+    */
+    
     @Override
     public int hashCode() {
         int hash = 0;

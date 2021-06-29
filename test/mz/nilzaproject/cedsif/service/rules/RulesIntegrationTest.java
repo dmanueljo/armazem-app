@@ -14,6 +14,8 @@ import mz.nilzaproject.cedsif.dao.ArmazemItemDAO;
 import mz.nilzaproject.cedsif.dao.ArmazemItemDAOImpl;
 import mz.nilzaproject.cedsif.dao.MaterialDAO;
 import mz.nilzaproject.cedsif.dao.MaterialDAOImpl;
+import mz.nilzaproject.cedsif.dao.UsuarioDAO;
+import mz.nilzaproject.cedsif.dao.UsuarioDAOImpl;
 import mz.nilzaproject.cedsif.model.db.ArmazemItem;
 import mz.nilzaproject.cedsif.model.db.Material;
 import org.apache.commons.logging.Log;
@@ -36,56 +38,49 @@ public class RulesIntegrationTest extends CustomSpringJUnitTransactionalOperatio
     private static Log LOG = LogFactory.getLog(RulesIntegrationTest.class);
     
     
-    private ArmazemItemDAO itemDAO;
-    private MaterialDAO matDAO;
-    
-    
-    private List<ArmazemItem> items;
-    
     @Override
     public void setUp() {
-        itemDAO = new ArmazemItemDAOImpl(hiberTemplate);
-        matDAO  = new MaterialDAOImpl(hiberTemplate);
         
-        //enabling mockito
-       MockitoAnnotations.initMocks(this);
-       
+        super.setUp();
+        //if you need something spectial put it here
     }
     
+   
     @Test
     @Override
     public void testRegra3DefineQuantidadeMaterialObsoletoArmazenadoOuLeiloado() {
+        
+        /**
+         * Mockito.when(a.getStatus()).thenReturn("LEILOADO");
+         * Mockito.verify(a).setStatus("obsoleto");
+         * when itens equals empty
+         * than fetch itemDAO.list() to itens
+         * MatcherAssert.assertThat(items, CoreMatchers.is(CoreMatchers.equalTo(Collections.EMPTY_LIST)))
+         */
         
         /*
         ArmazemItem item1 = Mockito.mock(ArmazemItem.class);
         ArmazemItem item2 = Mockito.mock(ArmazemItem.class);
         */
         
-        List<ArmazemItem> item = this.loadFakeData();
+        List<ArmazemItem> fakeItens = this.loadFakeData();
         
-        //save it to testdb
-        itemDAO.createOrUpdate(item.get(0));
-        //itemDAO.createOrUpdate(item2);
+        //create material first
+        ArmazemItem item0       =fakeItens.get(0);
+        Material material1111   =item0.getMaterial();
+
+        //create
+        this.materialDAO.createOrUpdate(material1111);
         
+        //than  to item
+        item0.setMaterial(material1111);
+        
+        //and finally create item
+        this.itemDAO.createOrUpdate(item0);
+             
         //test equals
-        Assert.assertEquals(item,item.get(0));
-        
-        //assertThat(item1, CoreMatchers.equalTo(itens.get(0)));
-        /**
-         * 
-        Mockito.when(a.getStatus()).thenReturn("LEILOADO");
-        Mockito.verify(a).setStatus("obsoleto");
-         */
-        
-       /**
-         * 
-         * when itens equals empty
-         * than fetch itemDAO.list() to itens
-         * 
-         */
-        //Mockito.when(items).thenReturn(itemDAO.list()); 
-        //MatcherAssert.assertThat(items, CoreMatchers.is(CoreMatchers.equalTo(Collections.EMPTY_LIST)));
-        
+        Assert.assertEquals(null,item0.getDataEntrada());
+
             //check assertation
          
     }

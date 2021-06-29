@@ -15,6 +15,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -47,14 +48,15 @@ public class ArmazemItem implements Serializable {
     @Column(name = "dataEntrada")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dataEntrada;
-    @Basic(optional = false)
-    @Column(name = "dataLeilao")
+    @Basic(optional = true)
+    @Column(name = "dataLeilao", nullable = true)
     @Temporal(TemporalType.TIMESTAMP)
     private Date dataLeilao;
     @Column(name = "status")
     private String status;
     @JoinColumn(name = "material_id", referencedColumnName = "id")
-    @ManyToOne
+    
+    @OneToOne(targetEntity = Material.class)
     private Material materialId;
 
     public ArmazemItem() {
@@ -64,6 +66,11 @@ public class ArmazemItem implements Serializable {
         this.id = id;
     }
 
+    public ArmazemItem(Integer id, Date dataEntrada) {
+        this.id = id;
+        this.dataEntrada = dataEntrada;
+    }
+    
     public ArmazemItem(Integer id, Date dataEntrada, Date dataLeilao) {
         this.id = id;
         this.dataEntrada = dataEntrada;
@@ -110,11 +117,11 @@ public class ArmazemItem implements Serializable {
         this.status = status;
     }
 
-    public Material getMaterialId() {
+    public Material getMaterial() {
         return materialId;
     }
 
-    public void setMaterialId(Material materialId) {
+    public void setMaterial(Material materialId) {
         this.materialId = materialId;
     }
 

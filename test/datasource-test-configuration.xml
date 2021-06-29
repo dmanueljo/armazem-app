@@ -40,6 +40,7 @@
                 <prop key="hibernate.show_sql">true</prop>
                 <!--<prop key="hibernate.connection.SetBigStringTryClob">false</prop>-->
                 <prop key="hibernate.jdbc.batch_size">0</prop>
+                <prop key="hibernate.hbm2ddl.auto">${spring.jpa.properties.hibernate.hbm2ddl.auto}</prop>
             </props>
         </property>
     </bean>
@@ -48,21 +49,7 @@
     <bean name="htemplate" class="org.springframework.orm.hibernate5.HibernateTemplate">
         <property name="sessionFactory" ref="sessionFactory" />
     </bean>
-    
-    <!--DAOs For Production Configuration
-    <bean name="itemDAO" class="mz.nilzaproject.cedsif.dao.ArmazemItemDAOImpl">
-       <constructor-arg name="htemplate"   ref="htemplate"/>
-    </bean>
-   
-    <bean name="materialDAO" class="mz.nilzaproject.cedsif.dao.MaterialDAOImpl">
-       <constructor-arg name="htemplate"   ref="htemplate"/>
-    </bean>
-    
-    <bean name="userDAO" class="mz.nilzaproject.cedsif.dao.UsuarioDAOImpl">
-       <constructor-arg name="htemplate"   ref="htemplate"/>
-    </bean>
-     UserDAO-->
-    
+       
     <!--Finalizando a configuracao com uma Tx-->
     <tx:annotation-driven/>
     <bean id="transactionManager"
