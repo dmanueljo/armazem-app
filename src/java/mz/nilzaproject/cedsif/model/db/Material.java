@@ -27,6 +27,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @Entity
 @Table(name = "material")
 @XmlRootElement
+/*
 @NamedQueries({
     @NamedQuery(name = "Material.findAll", query = "SELECT m FROM Material m")
     , @NamedQuery(name = "Material.findById", query = "SELECT m FROM Material m WHERE m.id = :id")
@@ -37,11 +38,14 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Material.findBySerialNumber", query = "SELECT m FROM Material m WHERE m.serialNumber = :serialNumber")
     , @NamedQuery(name = "Material.findByAnoFabrico", query = "SELECT m FROM Material m WHERE m.anoFabrico = :anoFabrico")
     , @NamedQuery(name = "Material.findByIdade", query = "SELECT m FROM Material m WHERE m.idade = :idade")})
+*/
 public class Material implements Serializable {
 
+    /*
     @ManyToMany(mappedBy = "materialList",targetEntity = Usuario.class)
     private List<Usuario> usuarioList;
-
+    */
+    
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -175,6 +179,7 @@ public class Material implements Serializable {
         return "mz.nilzaproject.cedsif.model.db.Material[ id=" + id + " ]";
     }
 
+    /*
     @XmlTransient
     public List<Usuario> getUsuarioList() {
         return usuarioList;
@@ -183,5 +188,6 @@ public class Material implements Serializable {
     public void setUsuarioList(List<Usuario> usuarioList) {
         this.usuarioList = usuarioList;
     }
+    */
     
 }

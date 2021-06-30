@@ -8,8 +8,6 @@ package mz.nilzaproject.cedsif.dao;
 import mz.nilzaproject.cedsif.controller.CustomSpringJUnitTransactionalOperations;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.junit.Test;
-import org.springframework.dao.DataAccessException;
 
 /**
  *

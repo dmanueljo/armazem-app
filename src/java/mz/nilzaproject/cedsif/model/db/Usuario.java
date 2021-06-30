@@ -23,23 +23,26 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Sergio
+ * @author nilza.graca
  */
 @Entity
 @Table(name = "usuario")
+
 @XmlRootElement
+/*
 @NamedQueries({
     @NamedQuery(name = "Usuario.findAll", query = "SELECT u FROM Usuario u")
     , @NamedQuery(name = "Usuario.findByUsername", query = "SELECT u FROM Usuario u WHERE u.username = :username")
     , @NamedQuery(name = "Usuario.findByPassword", query = "SELECT u FROM Usuario u WHERE u.password = :password")
     , @NamedQuery(name = "Usuario.findByNameDescription", query = "SELECT u FROM Usuario u WHERE u.nameDescription = :nameDescription")})
+*/
 public class Usuario implements Serializable {
 
-  
     @JoinTable(name = "usuario_material", joinColumns = {
         @JoinColumn(name = "usuario_id", referencedColumnName = "id")}, inverseJoinColumns = {
             @JoinColumn(name = "material_id", referencedColumnName = "id")})
     @ManyToMany
+    @XmlTransient
     private List<Material> materialList = new ArrayList<>();
 
     @Basic(optional = false)

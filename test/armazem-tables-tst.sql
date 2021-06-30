@@ -1,5 +1,10 @@
  --Author:  nilza.graca
  --Created: 15/jun/2021
+
+--create user sa@'localhost' identified with mysql_native_password BY '';
+--GRANT ALL ON `armazemdb`.* TO 'sa'@'localhost';
+--Create database
+create database armazemdb;
 --Entidade Material
 create table material(
     id              int,

@@ -23,11 +23,12 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Sergio
+ * @author nilza.graca
  */
 @Entity
 @Table(name = "armazem_item")
 @XmlRootElement
+/*
 @NamedQueries({
     @NamedQuery(name = "ArmazemItem.findAll", query = "SELECT a FROM ArmazemItem a")
     , @NamedQuery(name = "ArmazemItem.findById", query = "SELECT a FROM ArmazemItem a WHERE a.id = :id")
@@ -35,6 +36,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "ArmazemItem.findByDataEntrada", query = "SELECT a FROM ArmazemItem a WHERE a.dataEntrada = :dataEntrada")
     , @NamedQuery(name = "ArmazemItem.findByDataLeilao", query = "SELECT a FROM ArmazemItem a WHERE a.dataLeilao = :dataLeilao")
     , @NamedQuery(name = "ArmazemItem.findByStatus", query = "SELECT a FROM ArmazemItem a WHERE a.status = :status")})
+*/
 public class ArmazemItem implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -54,8 +56,8 @@ public class ArmazemItem implements Serializable {
     private Date dataLeilao;
     @Column(name = "status")
     private String status;
-    @JoinColumn(name = "material_id", referencedColumnName = "id")
     
+    @JoinColumn(name = "material_id", referencedColumnName = "id")  
     @OneToOne(targetEntity = Material.class)
     private Material materialId;
 

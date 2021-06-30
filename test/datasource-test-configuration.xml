@@ -12,13 +12,13 @@
     <!--Carrega as propriedades da DB-->
     <bean id="propertyConfigurer"
           class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
-          p:location="classpath:datasource-test-integration.properties" />
+          p:location="classpath:datasource-production-integration.properties" />
     
     <bean id="dataSource"
           class="com.mchange.v2.c3p0.ComboPooledDataSource" 
           destroy-method="close"
           p:driverClass="${spring.jpa.properties.h2.driver}"
-          p:jdbcUrl="${spring.datasource.url}"
+          p:jdbcUrl="spring.datasource.url"
           p:user="${spring.datasource.username}"
           p:password="${spring.datasource.password}"/>
       
@@ -45,7 +45,7 @@
         </property>
     </bean>
 
-    <!--Configuracao da instancia do hibernate-->
+    <!--Configuracao da instancia do hibernate session-->
     <bean name="htemplate" class="org.springframework.orm.hibernate5.HibernateTemplate">
         <property name="sessionFactory" ref="sessionFactory" />
     </bean>
