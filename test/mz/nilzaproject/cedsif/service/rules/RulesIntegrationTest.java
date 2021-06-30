@@ -77,11 +77,15 @@ public class RulesIntegrationTest extends CustomSpringJUnitTransactionalOperatio
         
         //and finally create item
         this.itemDAO.createOrUpdate(item0);
+        
+        //pega o item da db
+        item0 = this.itemDAO.read(1);
              
         //test equals
-        Assert.assertEquals(2,fakeItens.size());
-
-            //check assertation
+        //Assert.assertEquals(2,fakeItens.size());
+        
+         Assert.assertEquals(1,item0.getId().intValue());
+        //check assertation
          
     }
     

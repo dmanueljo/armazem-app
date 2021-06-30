@@ -18,9 +18,9 @@
           class="com.mchange.v2.c3p0.ComboPooledDataSource" 
           destroy-method="close"
           p:driverClass="${spring.jpa.properties.h2.driver}"
-          p:jdbcUrl="spring.datasource.url"
-          p:user="${spring.datasource.username}"
-          p:password="${spring.datasource.password}"/>
+          p:jdbcUrl="${spring.database.url}"
+          p:user="${spring.database.username}"
+          p:password="${spring.database.password}"/>
       
     <!-- ADD PERSISTENCE SUPPORT HERE (jpa, hibernate, etc) -->
     <!-- Creating a spring lazy connection -->        
