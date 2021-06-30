@@ -39,7 +39,7 @@ public abstract class CustomSpringJUnitTransactionalOperations extends AbstractT
      * Can be public if needed as preffered
      */
     @Autowired
-    private HibernateTemplate hiberTemplate;
+    protected HibernateTemplate hiberTemplate;
     
     protected ArmazemItemDAO itemDAO;
     protected MaterialDAO materialDAO;

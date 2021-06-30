@@ -84,7 +84,7 @@ public class RulesIntegrationTest extends CustomSpringJUnitTransactionalOperatio
         //test equals
         //Assert.assertEquals(2,fakeItens.size());
         
-         Assert.assertEquals(1,item0.getId().intValue());
+         Assert.assertEquals(false, this.hiberTemplate.getSessionFactory().getCurrentSession().contains(item0));
         //check assertation
          
     }
