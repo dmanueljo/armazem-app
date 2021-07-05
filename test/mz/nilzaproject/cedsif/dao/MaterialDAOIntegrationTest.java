@@ -5,7 +5,7 @@
  */
 package mz.nilzaproject.cedsif.dao;
 
-import mz.nilzaproject.cedsif.controller.CustomSpringJUnitTransactionalOperations;
+import mz.nilzaproject.cedsif.utils.CustomDAOTestSpringJUnitTransactionalOperations;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -13,7 +13,7 @@ import org.apache.commons.logging.LogFactory;
  *
  * @author nilza.graca
  */
-public class MaterialDAOIntegrationTest extends CustomSpringJUnitTransactionalOperations{
+public class MaterialDAOIntegrationTest extends CustomDAOTestSpringJUnitTransactionalOperations{
     
     private static Log LOG = LogFactory.getLog(MaterialDAOIntegrationTest.class);
     

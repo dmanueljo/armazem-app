@@ -13,7 +13,7 @@ import org.springframework.ui.ModelMap;
  *
  * @author nilza.graca
  */
-public class LoginController implements IControllers{
+public class LoginController implements IController{
 
     @Override
     public String getView(HttpServletRequest request, HttpServletResponse response, ModelMap map) {

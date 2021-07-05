@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.List;
-import mz.nilzaproject.cedsif.controller.CustomSpringJUnitTransactionalOperations;
+import mz.nilzaproject.cedsif.utils.CustomDAOTestSpringJUnitTransactionalOperations;
 import mz.nilzaproject.cedsif.dao.ArmazemItemDAO;
 import mz.nilzaproject.cedsif.dao.ArmazemItemDAOImpl;
 import mz.nilzaproject.cedsif.dao.MaterialDAO;
@@ -33,7 +33,7 @@ import org.mockito.MockitoAnnotations;
  * @author nilza.graca
  */
 
-public class RulesIntegrationTest extends CustomSpringJUnitTransactionalOperations implements RuleTest {
+public class RulesIntegrationTest extends CustomDAOTestSpringJUnitTransactionalOperations implements RuleTest {
    
     private static Log LOG = LogFactory.getLog(RulesIntegrationTest.class);
     
