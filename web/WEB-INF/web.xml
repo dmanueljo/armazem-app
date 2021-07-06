@@ -2,7 +2,7 @@
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>/WEB-INF/spring-context.xml</param-value>
+        <param-value>/WEB-INF/config/spring-context.xml</param-value>
     </context-param>
     <context-param>
         <param-name>javax.faces.PROJECT_STAGE</param-name>
@@ -21,8 +21,9 @@
         <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
+    <!--
     <servlet>
-        <servlet-name>ServletAdaptor</servlet-name>
+        <servlet-name>Spring Servlet</servlet-name>
         <servlet-class>com.sun.jersey.spi.spring.container.servlet.SpringServlet</servlet-class>
         <init-param>
             <description>Multiple packages, separated by semicolon(;), can be specified in param-value</description>
@@ -34,7 +35,7 @@
             <param-value>true</param-value>
         </init-param>
         <load-on-startup>1</load-on-startup>
-    </servlet>
+    </servlet> -->
     <servlet-mapping>
         <servlet-name>dispatcher</servlet-name>
         <url-pattern>*.jsf</url-pattern>
@@ -43,10 +44,12 @@
         <servlet-name>Faces Servlet</servlet-name>
         <url-pattern>/faces/*</url-pattern>
     </servlet-mapping>
+    
+    <!--
     <servlet-mapping>
-        <servlet-name>ServletAdaptor</servlet-name>
-        <url-pattern>/webresources/*</url-pattern>
-    </servlet-mapping>
+        <servlet-name>Spring Servlet</servlet-name>
+        <url-pattern>/rest/*</url-pattern> 
+    </servlet-mapping>-->
     <session-config>
         <session-timeout>
             30

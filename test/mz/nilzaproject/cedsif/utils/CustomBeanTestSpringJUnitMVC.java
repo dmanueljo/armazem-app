@@ -14,9 +14,9 @@ import org.springframework.test.context.web.WebAppConfiguration;
  *
  * @author nilza.graca
  */
-@WebAppConfiguration(value = "classpath:spring-context-test")
-@ContextConfiguration(locations = "classpath:spring-context-test")    //{"classpath:spring-context-test.xml",
-                            //       "classpath:dispatcher-servlet-test.xml"})
+@WebAppConfiguration
+@ContextConfiguration(locations = {"classpath:spring-context-test",
+                                   "classpath:dispatcher-servlet-test.xml"})
 public abstract class CustomBeanTestSpringJUnitMVC {
     
     public abstract void setUp();       

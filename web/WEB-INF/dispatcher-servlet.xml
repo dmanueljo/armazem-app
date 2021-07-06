@@ -21,7 +21,7 @@
     <!-- autodetect beans -->
     <context:annotation-config />
     <context:component-scan base-package="mz.nilzaproject.cedsif.controller" />
-    <!--<mvc:annotation-driven/>-->
+    <mvc:annotation-driven/>
 
     <!--Step2-->
     
@@ -29,12 +29,11 @@
     Most controllers will use the ControllerClassNameHandlerMapping above, but
     for the index controller we are using ParameterizableViewController, so we must
     define an explicit mapping for it.
-    -->
-    
+   
     <bean id="viewResolver"
           class="org.springframework.web.servlet.view.InternalResourceViewResolver"
           p:prefix="/WEB-INF/faces/"
           p:suffix=".xhtml" />
 
-    
+     -->
 </beans>
