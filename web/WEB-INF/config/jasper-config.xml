@@ -11,7 +11,7 @@
     <!--here all the url value should contains the valid path for the jrxml file-->
     <bean id="pdfReport"
           class="org.springframework.web.servlet.view.jasperreports.JasperReportsPdfView"
-          p:url="classpath:memorable-report.jrxml"
+          p:url="classpath:report-item.jrxml"
           p:reportDataKey="datasource" />
  
  <!--

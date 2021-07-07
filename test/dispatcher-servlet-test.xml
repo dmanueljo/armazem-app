@@ -22,6 +22,5 @@
     <context:annotation-config />
     <context:component-scan base-package="mz.nilzaproject.cedsif.controller" />
     <!--<mvc:annotation-driven/>-->
-
-    
+        
 </beans>
